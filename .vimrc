@@ -2,6 +2,7 @@
 " call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
+:let mapleader = ","
 " activate filetype plugin 
 filetype plugin on
 
