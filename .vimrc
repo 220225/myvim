@@ -1,6 +1,7 @@
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-"source D:\Projects\Fenrir\working_stuff\myvimrc
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
+" source D:\Projects\Fenrir\working_stuff\myvimrc
+
 " activate filetype plugin 
 filetype plugin on
 
@@ -392,7 +393,6 @@ set nocompatible
 filetype plugin  on 
 filetype plugin indent on 
 
-:colo MyDesert
 " cpp setup for fswitch"
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '../inc'
 nmap <silent> <Leader>of :FSHere<cr>
