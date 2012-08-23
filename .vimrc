@@ -2,7 +2,6 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
-:let mapleader = ","
 " activate filetype plugin 
 filetype plugin on
 
@@ -94,7 +93,7 @@ endif
 "-------------------------------------------------------------------------------
 " NerdTree keymapping
 "-------------------------------------------------------------------------------
-nmap <leader>,e  :NERDTreeToggle<CR>
+nmap ,,e  :NERDTreeToggle<CR>
 "-------------------------------------------------------------------------------
 " end of NerdTree
 "-------------------------------------------------------------------------------
@@ -425,7 +424,7 @@ au! BufRead,BufNewFile *.ms setf maxscript
 au! BufRead,BufNewFile *.mcr setf maxscript
 augroup END 
 
-language english
+"language english
 hi link EasyMotionTarget PmenuSel
 hi link EasyMotionShade  Pmenu
 
@@ -529,9 +528,9 @@ filetype plugin on
 " two vim lines to get those paths:
 " :r!which google-chrome
 " :r!whigh ghc
-let g:haddock_browser = "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"
-let g:ghc = "C:/Program Files (x86)/Haskell Platform/2012.2.0.0/bin/ghc"
-let g:haddock_docdir = "C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\doc\\html"
-let g:ghc_version = substitute(system("C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\bin\\ghc.exe  --numeric-version"),'\n','','')
+"let g:haddock_browser = "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"
+"let g:ghc = "C:/Program Files (x86)/Haskell Platform/2012.2.0.0/bin/ghc"
+"let g:haddock_docdir = "C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\doc\\html"
+"let g:ghc_version = substitute(system("C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\bin\\ghc.exe  --numeric-version"),'\n','','')
 
 
