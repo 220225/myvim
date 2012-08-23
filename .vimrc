@@ -2,7 +2,6 @@
 " call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
-:let mapleader = ","
 " activate filetype plugin 
 filetype plugin on
 
@@ -94,7 +93,7 @@ endif
 "-------------------------------------------------------------------------------
 " NerdTree keymapping
 "-------------------------------------------------------------------------------
-nmap <leader>,e  :NERDTreeToggle<CR>
+nmap ,,e  :NERDTreeToggle<CR>
 "-------------------------------------------------------------------------------
 " end of NerdTree
 "-------------------------------------------------------------------------------
