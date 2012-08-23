@@ -1,5 +1,5 @@
-" call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
 :let mapleader = ","
@@ -377,7 +377,7 @@ cnoremap <C-E> <End>
 cnoremap <C-K> <C-U>
 
 " ,/ turn off search highlighting
-nmap <leader>\ :nohl<CR>
+nmap \\ :nohl<CR>
 
 " path for find command
 set path+=.,"C:\Program Files\Autodesk\Maya2012\include",,
