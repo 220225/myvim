@@ -514,6 +514,12 @@ augroup Tabs
 
 
 " Haskell section
+augroup HSK
+        au Bufenter *.hs compiler ghc
+        autocmd FileType haskell setlocal formatoptions+=t
+        autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
+augroup END
+
 " You may already have the following two on, please check
 syntax on
 filetype plugin on
