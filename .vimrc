@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
@@ -424,7 +426,7 @@ au! BufRead,BufNewFile *.ms setf maxscript
 au! BufRead,BufNewFile *.mcr setf maxscript
 augroup END 
 
-language english
+"language english
 hi link EasyMotionTarget PmenuSel
 hi link EasyMotionShade  Pmenu
 
