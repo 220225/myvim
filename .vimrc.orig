@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+=======
 call pathogen#infect()
 
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
+>>>>>>> 936e00c3a33837ccd9f0f568601350d44a492bac
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
 let &t_Co=256
