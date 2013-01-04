@@ -2,6 +2,8 @@
 " call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
+let &t_Co=256
+
 " activate filetype plugin 
 filetype plugin on
 
@@ -424,7 +426,7 @@ au! BufRead,BufNewFile *.ms setf maxscript
 au! BufRead,BufNewFile *.mcr setf maxscript
 augroup END 
 
-language english
+"language english
 hi link EasyMotionTarget PmenuSel
 hi link EasyMotionShade  Pmenu
 
@@ -439,13 +441,24 @@ let g:EasyMotion_leader_key = ','
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Solarized Colorscheme
-set background=dark
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-let g:solarized_italic=0
-colorscheme solarized
+if has('gui')
+	set background=dark
+	let g:solarized_termtrans=1
+	let g:solarized_termcolors=256
+	let g:solarized_contrast="high"
+	let g:solarized_visibility="high"
+	let g:solarized_italic=0
+	colorscheme solarized
+else
+	set background=dark
+	let g:solarized_termtrans=1
+	let g:solarized_termcolors=256
+	let g:solarized_contrast="high"
+	let g:solarized_visibility="high"
+	let g:solarized_italic=0
+	colorscheme solarized
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " quickly edit vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
