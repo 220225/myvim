@@ -554,4 +554,5 @@ filetype plugin on
 "let g:haddock_docdir = "C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\doc\\html"
 "let g:ghc_version = substitute(system("C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\bin\\ghc.exe  --numeric-version"),'\n','','')
 
+set clipboard=unnamed
 
