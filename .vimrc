@@ -102,6 +102,30 @@ nmap ,,e  :NERDTreeToggle<CR>
 " end of NerdTree
 "-------------------------------------------------------------------------------
 
+
+"
+"-------------------------------------------------------------------------------
+" Project keymapping
+"-------------------------------------------------------------------------------
+nmap <silent> ,,p <Plug>ToggleProject
+autocmd BufAdd .vimprojects silent! %foldopen!
+
+if getcwd() != $HOME
+	if filereadable(getcwd(). '/.vimprojects')
+		Project .vimprojects
+	endif
+endif
+
+" project settings
+let g:proj_flags="imstc"
+let g:proj_run1="!git status"
+"-------------------------------------------------------------------------------
+" end of Project
+"-------------------------------------------------------------------------------
+
+
+
+
 "-------------------------------------------------------------------------------
 " taglist.vim : toggle the taglist window
 "-------------------------------------------------------------------------------
@@ -320,6 +344,7 @@ nmap <leader>bf :call BufSelInput()<CR>
   let g:fuf_modesDisable = []
   let g:fuf_mrufile_maxItem = 400
   let g:fuf_mrucmd_maxItem = 400
+
   nnoremap <silent> sj     :FufBuffer<CR>
   nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
   nnoremap <silent> sK     :FufFileWithFullCwd<CR>
@@ -486,13 +511,6 @@ autocmd GUIEnter * set visualbell t_vb=
 :let Egrep_Path = 'd:\util\bin\egrep.exe'
 :let Grep_Find_Path = 'd:\util\bin\find.exe'
 :let Grep_Xargs_Path = 'd:\util\bin\xargs.exe'
-
-"file encoding
-"set fileencodings=utf8,gb2312,gbk,latin1
-"set enc=utf8
-
-"set fileencoding=utf-8
-"set fileencodings=utf-8,big5,gbk,latin1
 
 if has("multi_byte")
   if &termencoding == ""
