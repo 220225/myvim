@@ -82,6 +82,17 @@ if has("gui_running")
     :map <silent> <C-F5> :if expand("%:p:h") != ""<CR>:!start explorer.exe %:p:h<CR>:endif<CR><CR>
   endif
 endif
+
+"if has("gui_macvim")
+    ":map <silent> <C-F5> :if expand("%:p:h") != ""<CR>:!open %:p:h<CR>:endif<CR><CR>
+"endif
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    " Do Mac stuff here
+	let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+  endif
+endif
 "
 "-------------------------------------------------------------------------------
 " autocomplete parenthesis, brackets and braces
