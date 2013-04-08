@@ -141,6 +141,9 @@ set nonumber
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set number!<CR>:set foldcolumn=0<CR>
 
+" folding toggle
+nnoremap <Space> za
+
 " visualize the tab
 command -bang -nargs=? VisualizeTab call VisualizeTabCmd(<bang>0)
 function! VisualizeTabCmd(forced)
@@ -527,6 +530,7 @@ endif
 "autocmd BufRead,BufNewFile *.py syntax on
 " ***
 autocmd BufRead,BufNewFile *.py set ai
+autocmd BufRead,BufNewFile *.py,*.pyw setf python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 ""show tab with underline
 autocmd BufRead *.py syntax match Tab /\t/
