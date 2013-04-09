@@ -82,6 +82,17 @@ if has("gui_running")
     :map <silent> <C-F5> :if expand("%:p:h") != ""<CR>:!start explorer.exe %:p:h<CR>:endif<CR><CR>
   endif
 endif
+
+"if has("gui_macvim")
+    ":map <silent> <C-F5> :if expand("%:p:h") != ""<CR>:!open %:p:h<CR>:endif<CR><CR>
+"endif
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    " Do Mac stuff here
+	let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+  endif
+endif
 "
 "-------------------------------------------------------------------------------
 " autocomplete parenthesis, brackets and braces
@@ -140,6 +151,9 @@ inoremap <silent> <F10>  <Esc><Esc>:Tlist<CR>
 set nonumber
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set number!<CR>:set foldcolumn=0<CR>
+
+" folding toggle
+nnoremap <Space> za
 
 " visualize the tab
 command -bang -nargs=? VisualizeTab call VisualizeTabCmd(<bang>0)
@@ -527,6 +541,7 @@ endif
 "autocmd BufRead,BufNewFile *.py syntax on
 " ***
 autocmd BufRead,BufNewFile *.py set ai
+autocmd BufRead,BufNewFile *.py,*.pyw setf python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 ""show tab with underline
 autocmd BufRead *.py syntax match Tab /\t/
