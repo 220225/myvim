@@ -53,3 +53,6 @@
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/goldenview"]
+	path = bundle/goldenview
+	url = https://github.com/zhaocai/GoldenView.Vim.git
