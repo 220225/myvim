@@ -53,9 +53,12 @@
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "bundle/goldenview"]
-	path = bundle/goldenview
-	url = https://github.com/zhaocai/GoldenView.Vim.git
 [submodule "bundle/vim-snipmate"]
 	path = bundle/vim-snipmate
 	url = https://github.com/garbas/vim-snipmate.git
+[submodule "bundle/YankRing"]
+	path = bundle/YankRing
+	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "bundle/rainbow_parentheses"]
+	path = bundle/rainbow_parentheses
+	url = https://github.com/kien/rainbow_parentheses.vim.git

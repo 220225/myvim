@@ -6,7 +6,7 @@ call pathogen#infect()
 
 let &t_Co=256
 
-" activate filetype plugin 
+" activate filetype plugin
 filetype plugin on
 
 " Make external commands work through a pipe instead of a pseudo-tty
@@ -20,9 +20,19 @@ set ch=2		" Make command line two lines high
 set mousehide		" Hide the mouse when typing text
 set guioptions-=m
 set guioptions-=T
-"set nowrap
-"set laststatus=2
 
+" show relative number, good to move faster
+set relativenumber
+set undofile
+" set search /g as default option
+set gdefault
+nnoremap <tab> %
+vnoremap <tab> %
+
+set wrap
+set textwidth=79
+set formatoptions=qrnl
+set colorcolumn=85
 
 " Make shift-insert work like in Xterm
 map <S-Insert> <MiddleMouse>
@@ -70,7 +80,7 @@ endif
 
 " set the initial window size
 set lines=50 columns=140
-" set tab size 
+" set tab size
 set ts=4
 
 " Ctrl+F5 to open explorer with folder contain current opened file
@@ -146,7 +156,7 @@ inoremap <silent> <F10>  <Esc><Esc>:Tlist<CR>
 ":map <F11>  :sp tags<CR>:%s/^\([^	:]*:\)\=\([^	]*\).*/syntax keyword Tag \2/<CR>:wq! tags.vim<CR>/^<CR><F12>
 ":map <F12>  :so tags.vim<CR>
 
-" key binding 
+" key binding
 " Turn on line numbers:
 set nonumber
 " Toggle line numbers and fold column for easy copying:
@@ -184,7 +194,7 @@ imap <C-e> <ESC>
 "nmap <C-j> o<ESC>
 imap <C-v> <C-o><S-p>
 
-" key mappings 
+" key mappings
 vnoremap S "_dP
 
 " command-line mode key mapping
@@ -206,7 +216,7 @@ map <C-a> ggVG
 cmap <C-a> ggVG
 imap <C-a> <C-O>ggVG
 vmap <C-a> ggVG
- 
+
 "noremap <C-S>		:update<CR>
 " Alt-j ==> add blank line
 nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
@@ -214,19 +224,19 @@ nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 "nnoremap <A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 "nnoremap <A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
-" grep key binding 
+" grep key binding
 "map <C-F4> :execute 'vimgrep /'.expand('<cword>').'/gj '.expand('%') | cope
 "map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 "map <F5> :execute "vimgrep /" . <C-r>=expand("<cword>") . "/j **" <Bar> cw<CR>
 
 
-" indent section 
+" indent section
 set noexpandtab
 set autoindent smartindent
 set smarttab
 set backspace=eol,start,indent
 filetype plugin indent on
-" end of indent section 
+" end of indent section
 
 " don't want to backup files
 set nobackup
@@ -265,7 +275,7 @@ im :<CR> :<CR><TAB>
 autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
 " end of Python section
 
-set clipboard+=unnamed 
+set clipboard+=unnamed
 set go+=a
 
 
@@ -400,7 +410,7 @@ nmap <leader>bf :call BufSelInput()<CR>
   nnoremap <silent> se     :FufEditDataFile<CR>
   nnoremap <silent> sr     :FufRenewCache<CR>
  "<<<<<<<<
-" end of fuzzy find 
+" end of fuzzy find
 
 " vimya - vim for maya
 let vimyaPort=12345
@@ -433,13 +443,13 @@ set path+=.,"C:\Program Files\Autodesk\Maya2012\include",,
 
 " for xptemplate plug-in
 set nocompatible
-filetype plugin  on 
-filetype plugin indent on 
+filetype plugin  on
+filetype plugin indent on
 
 " cpp setup for fswitch"
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '../inc'
 nmap <silent> <Leader>of :FSHere<cr>
-""Switch to the file and load it into the window on the right 
+""Switch to the file and load it into the window on the right
 nmap <silent> <Leader>ol :FSRight<cr>
 ""Switch to the file and load it into a new window split on the right
 nmap <silent> <Leader>oL :FSSplitRight<cr>
@@ -447,13 +457,13 @@ nmap <silent> <Leader>oL :FSSplitRight<cr>
 nmap <silent> <Leader>oh :FSLeft<cr>
 ""Switch to the file and load it into a new window split on the left
 nmap <silent> <Leader>oH :FSSplitLeft<cr>
-""Switch to the file and load it into the window above 
+""Switch to the file and load it into the window above
 nmap <silent> <Leader>ok :FSAbove<cr>
 ""Switch to the file and load it into a new window split above
 nmap <silent> <Leader>oK :FSSplitAbove<cr>
-""Switch to the file and load it into the window below 
+""Switch to the file and load it into the window below
 nmap <silent> <Leader>oj :FSBelow<cr>
-""Switch to the file and load it into a new window split below 
+""Switch to the file and load it into a new window split below
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
 
 "augroup filetypedetect
@@ -465,7 +475,7 @@ nmap <silent> <Leader>oJ :FSSplitBelow<cr>
 augroup filetypedetect
 au! BufRead,BufNewFile *.ms setf maxscript
 au! BufRead,BufNewFile *.mcr setf maxscript
-augroup END 
+augroup END
 
 "language english
 hi link EasyMotionTarget PmenuSel
@@ -554,7 +564,7 @@ im :<CR> :<CR><TAB>
 autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
 " end of Python section
 
-set clipboard+=unnamed 
+set clipboard+=unnamed
 set go+=a
 
 
@@ -587,5 +597,9 @@ filetype plugin on
 "let g:haddock_docdir = "C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\doc\\html"
 "let g:ghc_version = substitute(system("C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\bin\\ghc.exe  --numeric-version"),'\n','','')
 
-set clipboard=unnamed
+" Ack section
+nnoremap <silent> <Leader>g :Ack<CR>
 
+" some handy key mappings
+" remove all empty char at end of each lines
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
