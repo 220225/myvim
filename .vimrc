@@ -600,6 +600,9 @@ filetype plugin on
 " Ack section
 nnoremap <silent> <Leader>g :Ack<CR>
 
-" some handy key mappings
+" Rainbow Parentheses sction
+nnoremap <silent> <Leader>r :RainbowParenthesesLoadBraces<CR> :RainbowParenthesesToggle<CR>
+
+" some handy key mapping
 " remove all empty char at end of each lines
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
