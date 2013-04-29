@@ -245,11 +245,8 @@ set ru "ruler
 set shiftwidth=4
 
 set ignorecase
-set tags=./tags,tags,C:/Spyro/Game/tags;
-set tags+=C:/Spyro/Game/tags;
-set tags+=C:/Spyro/tl/tags;
-set tags+=C:/Spyro/tools/tags;
-set tags+=C:/Spyro/LuxEngine/tags;
+set tags=./tags,tags;
+set tags+=/Users/mac/simple/Assets/iTweenEditor/tags
 
 " map ,co to add comment box
 map ,co O#<Esc>100A=<Esc>100\|D<CR>i#<CR><Esc>i##<Esc>100a=<Esc>100\|D<Esc>kA
@@ -606,3 +603,24 @@ nnoremap <silent> <Leader>r :RainbowParenthesesLoadBraces<CR> :RainbowParenthese
 " some handy key mapping
 " remove all empty char at end of each lines
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" auto completion for c# files
+au FileType cs set omnifunc=syntaxcomplete#Complete
+
+" get rid of C-X,C-O
+function! SuperCleverTab()
+    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        if &omnifunc != ''
+            return "\<C-X>\<C-O>"
+        elseif &dictionary != ''
+            return "\<C-K>"
+        else
+            return "\<C-N>"
+        endif
+    endif
+endfunction
+
+inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
