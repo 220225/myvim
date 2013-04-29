@@ -246,7 +246,23 @@ set shiftwidth=4
 
 set ignorecase
 set tags=./tags,tags;
-set tags+=/Users/mac/simple/Assets/iTweenEditor/tags
+"tags for projects
+
+" ctags usage 
+" .\ctags.exe --recurse -f d:\mytagfile --exclude="bin" --extra=+fq
+" --fields=+ianmzS --c#-kinds=cimnp d:\myproduct
+if has("gui_running")
+	if has("win32")
+		set tags+=C:/dev/SOG/D2/tags
+	elseif has("unix")
+		let s:uname = system("uname")
+		if s:uname == "Darwin\n"
+			set tags+=/Users/xpec/Perforce/SOG/D2/tags
+		endif
+	endif
+endif
+
+
 
 " map ,co to add comment box
 map ,co O#<Esc>100A=<Esc>100\|D<CR>i#<CR><Esc>i##<Esc>100a=<Esc>100\|D<Esc>kA
