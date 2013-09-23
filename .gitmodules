@@ -65,3 +65,6 @@
 [submodule "python-syntax"]
 	path = python-syntax
 	url = https://github.com/hdima/python-syntax.git
+[submodule "bundle/vim-easyclip"]
+	path = bundle/vim-easyclip
+	url = https://github.com/svermeulen/vim-easyclip.git
