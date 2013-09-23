@@ -23,11 +23,15 @@ set guioptions-=T
 
 " show relative number, good to move faster
 set relativenumber
-set undofile
+"set undofile
+
 " set search /g as default option
 set gdefault
 nnoremap <tab> %
 vnoremap <tab> %
+
+nnoremap j gj
+nnoremap k gk
 
 set wrap
 "set textwidth=79
@@ -266,16 +270,17 @@ set tags=./tags,tags;
 
 " .\ctags.exe --recurse -f d:\mytagfile --exclude="bin" --extra=+fq
 " --fields=+ianmzS --c#-kinds=cimnp d:\myproduct
-if has("gui_running")
-	if has("win32")
-		set tags+=C:/dev/SOG/D2/tags
-	elseif has("unix")
-		let s:uname = system("uname")
-		if s:uname == "Darwin\n"
-			set tags+=/Users/xpec/Perforce/SOG/D2/tags
-		endif
-	endif
-endif
+set tags+=/Users/xpec/Perforce/SOG/D2/tags
+"if has("gui_running")
+	"if has("win32")
+		"set tags+=C:/dev/SOG/D2/tags
+	"elseif has("unix")
+		"let s:uname = system("uname")
+		"if s:uname == "Darwin\n"
+			"set tags+=/Users/xpec/Perforce/SOG/D2/tags
+		"endif
+	"endif
+"endif
 
 
 
