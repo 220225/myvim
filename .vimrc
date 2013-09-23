@@ -30,7 +30,7 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 set wrap
-set textwidth=79
+"set textwidth=79
 set formatoptions=qrnl
 set colorcolumn=85
 
@@ -232,7 +232,7 @@ nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " indent section
 set noexpandtab
-set autoindent smartindent
+"set autoindent smartindent
 set smarttab
 set backspace=eol,start,indent
 filetype plugin indent on
@@ -249,6 +249,21 @@ set tags=./tags,tags;
 "tags for projects
 
 " ctags usage 
+" c  classes
+" d  macro definitions
+" e  enumerators (values inside an enumeration)
+" f  function definitions
+" g  enumeration names
+" l  local variables [off]
+" m  class, struct, and union members
+" n  namespaces
+" p  function prototypes [off]
+" s  structure names
+" t  typedefs
+" u  union names
+" v  variable definitions
+" x  external and forward variable declarations [off]
+
 " .\ctags.exe --recurse -f d:\mytagfile --exclude="bin" --extra=+fq
 " --fields=+ianmzS --c#-kinds=cimnp d:\myproduct
 if has("gui_running")
@@ -289,8 +304,7 @@ autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
 " end of Python section
 
 set clipboard+=unnamed
-set go+=a
-
+"set go+=a
 
 augroup Tabs
    "new tab
