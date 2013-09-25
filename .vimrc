@@ -664,3 +664,13 @@ let g:EasyClipUseCutDefaults = 0
 nmap yd <Plug>MoveMotionPlug
 nmap ydd <Plug>MoveMotionLinePlug
 xmap yd <Plug>MoveMotionXPlug
+
+
+" resize horzontal split window
+nmap <S-Up> <C-W>-<C-W>-
+nmap <S-Down> <C-W>+<C-W>+
+
+" resize vertical split window
+nmap <S-Left> <C-W>><C-W>>
+nmap <S-Right> <C-W><<C-W><
+
