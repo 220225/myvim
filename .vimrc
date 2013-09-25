@@ -27,8 +27,8 @@ set relativenumber
 
 " set search /g as default option
 set gdefault
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap <tab> %
+"vnoremap <tab> %
 
 nnoremap j gj
 nnoremap k gk
