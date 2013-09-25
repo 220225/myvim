@@ -674,3 +674,6 @@ nmap <S-Down> <C-W>+<C-W>+
 nmap <S-Left> <C-W>><C-W>>
 nmap <S-Right> <C-W><<C-W><
 
+
+" for vim-easy-align
+vnoremap <silent> <Enter> :EasyAlign<cr>
