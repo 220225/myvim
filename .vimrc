@@ -309,7 +309,7 @@ autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
 " end of Python section
 
 set clipboard+=unnamed
-"set go+=a
+set go+=a
 
 augroup Tabs
    "new tab
@@ -597,8 +597,8 @@ autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
 " end of Python section
 
 set clipboard+=unnamed
+set paste
 set go+=a
-
 
 augroup Tabs
 
@@ -659,12 +659,6 @@ endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-let g:EasyClipUseCutDefaults = 0
-nmap yd <Plug>MoveMotionPlug
-nmap ydd <Plug>MoveMotionLinePlug
-xmap yd <Plug>MoveMotionXPlug
-
 
 " resize horzontal split window
 nmap <S-Up> <C-W>-<C-W>-
