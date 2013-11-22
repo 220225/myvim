@@ -576,7 +576,8 @@ if has("multi_byte")
   setglobal fileencoding=utf-8
   "setglobal bomb
   "set fileencodings=ucs-bom,utf-8,latin1
-  set fileencodings=utf-8,big5,gbk,latin1
+  "set fileencodings=utf-8,big5,gbk,latin1
+  set fileencodings=utf-8,big5,gbk,latin1,euc-jp,iso-2022-jp,cp932,sjis
 endif
 " Python section
 " *** syntax on will mess up the easy motion plug-in
@@ -671,3 +672,6 @@ nmap <S-Right> <C-W><<C-W><
 
 " for vim-easy-align
 vnoremap <silent> <Enter> :EasyAlign<cr>
+
+" for Japense encoding
+nmap <F5> :e ++enc=sjis<cr>
