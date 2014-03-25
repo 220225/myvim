@@ -345,6 +345,7 @@ let g:qfix_win = bufnr("$")
 endif
 endfunction
 nnoremap <leader>q :QFix<CR>
+nnoremap <leader>e :Errors<CR>
 
 " Lua Tection
 let g:Lua_AuthorName      = 'Benny Yang'
@@ -413,7 +414,7 @@ nmap <leader>bf :call BufSelInput()<CR>
   nnoremap <silent> ,s<C-d> :FufDir<CR>
   nnoremap <silent> ,sn     :FufMruFile<CR>
   nnoremap <silent> ,sN     :FufMruFileInCwd<CR>
-  nnoremap <silent> ,sm     :FufMruCmd<CR>
+  "nnoremap <silent> ,sm     :FufMruCmd<CR>
   nnoremap <silent> ,su     :FufBookmarkFile<CR>
   nnoremap <silent> ,s<C-u> :FufBookmarkFileAdd<CR>
   vnoremap <silent> ,s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
@@ -446,10 +447,10 @@ nmap <leader>bf :call BufSelInput()<CR>
 
 " vimya - vim for maya
 let vimyaPort=12345
-nnoremap <leader>sm :py sendBufferToMaya ()<cr>
-vnoremap <leader>sm :py sendBufferToMaya ()<cr>
-nnoremap <leader>sb :py sendBufferToMaya (True)<cr>
-vnoremap <leader>sb :py sendBufferToMaya (True)<cr>
+nnoremap ,sm :py sendBufferToMaya ()<cr>
+vnoremap ,sm :py sendBufferToMaya ()<cr>
+nnoremap ,sb :py sendBufferToMaya (True)<cr>
+vnoremap ,sb :py sendBufferToMaya (True)<cr>
 "
 
 " taglist mel support
@@ -461,7 +462,7 @@ cnoremap <C-E> <End>
 cnoremap <C-K> <C-U>
 
 " ,/ turn off search highlighting
-nmap \\ :nohl<CR>
+nmap \\ :nohl<CR>:lclose<CR>
 
 " path for find command
 set path+=.,"C:\Program Files\Autodesk\Maya2012\include",,
@@ -532,6 +533,12 @@ if has('gui')
 	let g:solarized_visibility="high"
 	let g:solarized_italic=0
 	colorscheme solarized
+	"colorscheme molokai
+	"colorscheme twilight
+	"colorscheme smyck
+	"colorscheme vitamins
+	"colorscheme mustang
+
 else
 	set background=dark
 	let g:solarized_termtrans=1
@@ -562,11 +569,11 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 " grep.vim config
-:let Grep_Path = 'D:\util\bin\grep.exe'
-:let Fgrep_Path = 'D:\util\bin\fgrep.exe'
-:let Egrep_Path = 'd:\util\bin\egrep.exe'
-:let Grep_Find_Path = 'd:\util\bin\find.exe'
-:let Grep_Xargs_Path = 'd:\util\bin\xargs.exe'
+:let Grep_Path = 'C:\Benny_Data\util\bin\grep.exe'
+:let Fgrep_Path = 'C:\Benny_Data\util\bin\fgrep.exe'
+:let Egrep_Path = 'C:\Benny_Data\util\bin\egrep.exe'
+:let Grep_Find_Path = 'C:\Benny_Data\util\bin\find.exe'
+:let Grep_Xargs_Path = 'C:\Benny_Data\util\bin\xargs.exe'
 
 if has("multi_byte")
   if &termencoding == ""
@@ -675,3 +682,9 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 
 " for Japense encoding
 nmap <F5> :e ++enc=sjis<cr>
+
+" ack mapping
+nnoremap <leader>v V`]
+
+" reselect the text that was just pasted 
+nnoremap <leader>a :Ack
