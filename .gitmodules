@@ -22,10 +22,6 @@
 	path = bundle/grep
 	url = https://github.com/vim-scripts/grep.vim.git
 	ignore = untracked
-[submodule "bundle/vim-snipmate"]
-	path = bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
-	ignore = untracked
 [submodule "bundle/I9"]
 	path = bundle/I9
 	url = https://github.com/mantiz/vim-plugin-l9.git
