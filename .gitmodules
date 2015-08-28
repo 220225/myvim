@@ -26,3 +26,6 @@
 	path = bundle/I9
 	url = https://github.com/mantiz/vim-plugin-l9.git
 	ignore = untracked
+[submodule "bundle/python-mode"]
+	path = bundle/python-mode
+	url = git://github.com/klen/python-mode.git
