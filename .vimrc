@@ -4,7 +4,12 @@ call pathogen#infect()
 " call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
-let &t_Co=256
+"let t_Co=256
+" Always show statusline
+set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
 
 " activate filetype plugin
 filetype plugin on
@@ -107,48 +112,6 @@ if has("unix")
 	let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
   endif
 endif
-"
-"-------------------------------------------------------------------------------
-" autocomplete parenthesis, brackets and braces
-"-------------------------------------------------------------------------------
-"inoremap ( ()<Left>
-"inoremap [ []<Left>
-"inoremap { {}<Left>
-
-"vnoremap ( s()<Esc>P
-"vnoremap [ s[]<Esc>P
-"vnoremap { s{}<Esc>P
-"
-"-------------------------------------------------------------------------------
-" NerdTree keymapping
-"-------------------------------------------------------------------------------
-nmap ,,e  :NERDTreeToggle<CR>
-"-------------------------------------------------------------------------------
-" end of NerdTree
-"-------------------------------------------------------------------------------
-
-
-"
-"-------------------------------------------------------------------------------
-" Project keymapping
-"-------------------------------------------------------------------------------
-nmap <silent> ,,p <Plug>ToggleProject
-autocmd BufAdd .vimprojects silent! %foldopen!
-
-if getcwd() != $HOME
-	if filereadable(getcwd(). '/.vimprojects')
-		Project .vimprojects
-	endif
-endif
-
-" project settings
-let g:proj_flags="imstc"
-let g:proj_run1="!git status"
-"-------------------------------------------------------------------------------
-" end of Project
-"-------------------------------------------------------------------------------
-
-
 
 
 "-------------------------------------------------------------------------------
@@ -309,6 +272,7 @@ autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
 " end of Python section
 
 set clipboard+=unnamed
+set paste
 set go+=a
 
 augroup Tabs
@@ -586,62 +550,9 @@ if has("multi_byte")
   "set fileencodings=utf-8,big5,gbk,latin1
   set fileencodings=utf-8,big5,gbk,latin1,euc-jp,iso-2022-jp,cp932,sjis
 endif
-" Python section
-" *** syntax on will mess up the easy motion plug-in
-"autocmd BufRead,BufNewFile *.py syntax on
-" ***
-autocmd BufRead,BufNewFile *.py set ai
-autocmd BufRead,BufNewFile *.py,*.pyw setf python
-autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
-""show tab with underline
-autocmd BufRead *.py syntax match Tab /\t/
-""Execute file being edited with <Shift> + e:
-"autocmd BufRead *.py map <buffer> <S-e> :w<CR>:!"C:\Program Files\Autodesk\Maya2012\bin\mayapy" % <CR>
-autocmd BufRead *.py map <buffer> <S-e> :w<CR>:!"C:\Python26\python" % <CR>
-
-au FileType python setl autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
-im :<CR> :<CR><TAB>
-autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
-" end of Python section
-
-set clipboard+=unnamed
-set paste
-set go+=a
-
-augroup Tabs
-
-
-" Haskell section
-augroup HSK
-        au Bufenter *.hs compiler ghc
-        autocmd FileType haskell setlocal formatoptions+=t
-        autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
-augroup END
-
-" You may already have the following two on, please check
-syntax on
-filetype plugin on
-
-" This assumes that ghc is in your path, if it is not, or you
-" wish to use a specific version of ghc, then please change
-" the ghc below to a full path to the correct one
-" au BufEnter *.hs compiler ghc
-
-" For this section both of these should be set to your
-" browser and ghc of choice, I used the following
-" two vim lines to get those paths:
-" :r!which google-chrome
-" :r!whigh ghc
-"let g:haddock_browser = "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"
-"let g:ghc = "C:/Program Files (x86)/Haskell Platform/2012.2.0.0/bin/ghc"
-"let g:haddock_docdir = "C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\doc\\html"
-"let g:ghc_version = substitute(system("C:\\Program Files (x86)\\Haskell Platform\\2012.2.0.0\\bin\\ghc.exe  --numeric-version"),'\n','','')
 
 " Ack section
 nnoremap <silent> <Leader>g :Ack<CR>
-
-" Rainbow Parentheses sction
-nnoremap <silent> <Leader>r :RainbowParenthesesLoadBraces<CR> :RainbowParenthesesToggle<CR>
 
 " some handy key mapping
 " remove all empty char at end of each lines
@@ -688,3 +599,47 @@ nnoremap <leader>v V`]
 
 " reselect the text that was just pasted 
 nnoremap <leader>a :Ack
+
+
+" status bar fix
+set statusline=
+set statusline+=%7*\[%n]                                  "buffernr
+set statusline+=%1*\ %<%F\                                "File+path
+set statusline+=%2*\ %y\                                  "FileType
+set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
+set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
+set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
+set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
+set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
+set statusline+=%9*\ col:%03c\                            "Colnr
+"set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+
+function! HighlightSearch()
+  if &hls
+    return 'H'
+  else
+    return ''
+  endif
+endfunction
+
+hi User1 guifg=#ffdad8  guibg=#880c0e
+hi User2 guifg=#000000  guibg=#F4905C
+hi User3 guifg=#292b00  guibg=#f4f597
+hi User4 guifg=#112605  guibg=#aefe7B
+hi User5 guifg=#051d00  guibg=#7dcc7d
+hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
+hi User8 guifg=#ffffff  guibg=#5b7fbb
+hi User9 guifg=#ffffff  guibg=#810085
+hi User0 guifg=#ffffff  guibg=#094afe
+
+
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1  
+set fileencoding=utf-8  
+set encoding=utf-8  
+
+set termencoding=utf-8
+language messages zh_TW.utf-8
+"set gfn=Monaco:h10:cANSI  
+"set gfw=NSimsun:h12
+"set guifont=Courier\ New\:h12  
+"set guifontwide=NSimsun\:h12 
