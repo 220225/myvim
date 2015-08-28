@@ -688,3 +688,6 @@ nnoremap <leader>v V`]
 
 " reselect the text that was just pasted 
 nnoremap <leader>a :Ack
+
+
+" my test for remote 
