@@ -15,8 +15,6 @@ set t_Co=256
 filetype plugin on
 
 " Make external commands work through a pipe instead of a pseudo-tty
-"set noguipty
-
 " set the X11 font to use
 " set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
 
@@ -272,7 +270,6 @@ autocmd BufWritePre *.py normal m`:s/\s\+$//e ``
 " end of Python section
 
 set clipboard+=unnamed
-set paste
 set go+=a
 
 augroup Tabs
@@ -311,57 +308,7 @@ endfunction
 nnoremap <leader>q :QFix<CR>
 nnoremap <leader>e :Errors<CR>
 
-" Lua Tection
-let g:Lua_AuthorName      = 'Benny Yang'
-let g:Lua_AuthorRef       = ''
-let g:Lua_Email           = 'Benny_Yang@xpec.com.tw'
-let g:Lua_Company         = 'XPEC'
-" End of Lua section
-
-
-" buffer sel by pattern {{{
-" ====================================
-function! BufSel(pattern)
-  let buf_count = bufnr("$")
-  let cur_bufnr = 1
-  let nummatches = 0
-  let firstmatchingbufnr = 0
-  while cur_bufnr <= buf_count
-if(bufexists(cur_bufnr))
-      let currbufname = bufname(cur_bufnr)
-      if(match(currbufname, a:pattern) > -1)
-        echo cur_bufnr . ": ". bufname(cur_bufnr)
-        let nummatches += 1
-        let firstmatchingbufnr = cur_bufnr
-      endif
-    endif
-    let cur_bufnr = cur_bufnr + 1
-  endwhile
-  if(nummatches == 1)
-    execute ":buffer ". firstmatchingbufnr
-  elseif(nummatches > 1)
-    let desiredbufnr = input("Enter buffer number: ")
-    if(strlen(desiredbufnr) != 0)
-      execute ":buffer ". desiredbufnr
-    endif
-  else
-    echo "No matching buffers"
-  endif
-endfunction
-
-function! BufSelInput()
-  let pattern = input( "pattern: " )
-call BufSel( pattern )
-endfunction
-
-"Bind the BufSel() function to a user-command
-command! -nargs=1 Bs :call BufSel("<args>")
-nmap <leader>bf :call BufSelInput()<CR>
-" ====================================
-" }}}
-
 " fuzzy find sectioon
-"<<<<<<<<<<<<
   let g:fuf_modesDisable = []
   let g:fuf_mrufile_maxItem = 400
   let g:fuf_mrucmd_maxItem = 400
@@ -406,7 +353,6 @@ nmap <leader>bf :call BufSelInput()<CR>
   nnoremap <silent> ,sh     :FufHelp<CR>
   nnoremap <silent> ,se     :FufEditDataFile<CR>
   nnoremap <silent> ,sr     :FufRenewCache<CR>
- "<<<<<<<<
 " end of fuzzy find
 
 " vimya - vim for maya
@@ -430,44 +376,6 @@ nmap \\ :nohl<CR>:lclose<CR>
 
 " path for find command
 set path+=.,"C:\Program Files\Autodesk\Maya2012\include",,
-
-" if running on Windows, set cscope database
-"if has("gui_running")
-  "if has("win32")
-	":cs add c:\Progra~1\Autodesk\Maya2012\cscope.out c:\Progra~1\Autodesk\Maya2012
-  "endif
-"endif
-
-" for xptemplate plug-in
-set nocompatible
-filetype plugin  on
-filetype plugin indent on
-
-" cpp setup for fswitch"
-au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '../inc'
-nmap <silent> <Leader>of :FSHere<cr>
-""Switch to the file and load it into the window on the right
-nmap <silent> <Leader>ol :FSRight<cr>
-""Switch to the file and load it into a new window split on the right
-nmap <silent> <Leader>oL :FSSplitRight<cr>
-""Switch to the file and load it into the window on the left
-nmap <silent> <Leader>oh :FSLeft<cr>
-""Switch to the file and load it into a new window split on the left
-nmap <silent> <Leader>oH :FSSplitLeft<cr>
-""Switch to the file and load it into the window above
-nmap <silent> <Leader>ok :FSAbove<cr>
-""Switch to the file and load it into a new window split above
-nmap <silent> <Leader>oK :FSSplitAbove<cr>
-""Switch to the file and load it into the window below
-nmap <silent> <Leader>oj :FSBelow<cr>
-""Switch to the file and load it into a new window split below
-nmap <silent> <Leader>oJ :FSSplitBelow<cr>
-
-"augroup filetypedetect
-"autocmd BufRead,BufNewFile *.ms setf lua
-"autocmd BufRead,BufNewFile *.mcr setf maxscript
-"autocmd BufRead,BufNewFile *.mse setf maxscript
-"augroup END
 
 augroup filetypedetect
 au! BufRead,BufNewFile *.ms setf maxscript
@@ -497,12 +405,6 @@ if has('gui')
 	let g:solarized_visibility="high"
 	let g:solarized_italic=0
 	colorscheme solarized
-	"colorscheme molokai
-	"colorscheme twilight
-	"colorscheme smyck
-	"colorscheme vitamins
-	"colorscheme mustang
-
 else
 	set background=dark
 	let g:solarized_termtrans=1
@@ -526,7 +428,6 @@ set noswapfile
 " mouse click as *
 :noremap <2-C-LeftMouse> *
 :noremap <C-f> *<S-n>
-":noremap <2-C-LeftMouse> <C-]>
 
 " no error bell and flash bell
 set noerrorbells visualbell t_vb=
@@ -612,7 +513,7 @@ set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix.
 set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
 set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%9*\ col:%03c\                            "Colnr
-"set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
 
 function! HighlightSearch()
   if &hls
