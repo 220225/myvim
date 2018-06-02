@@ -4,7 +4,6 @@ call pathogen#infect()
 " call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
 
-"let t_Co=256
 " Always show statusline
 set laststatus=2
 
@@ -27,11 +26,6 @@ set guioptions-=T
 " show relative number, good to move faster
 set relativenumber
 "set undofile
-
-" set search /g as default option
-set gdefault
-"nnoremap <tab> %
-"vnoremap <tab> %
 
 nnoremap j gj
 nnoremap k gk
@@ -59,12 +53,6 @@ if version >= 500
   " Switch on search pattern highlighting.
   set hlsearch
 
-  " For Win32 version, have "K" lookup the keyword in a help file
-  "if has("win32")
-  "  let winhelpfile='windows.hlp'
-  "  map K :execute "!start winhlp32 -k <cword> " . winhelpfile <CR>
-  "endif
-
   " Set nice colors
   " background for normal text is light grey
   " Text below the last line is darker grey
@@ -78,12 +66,6 @@ if version >= 500
   highlight Special gui=NONE guibg=grey95
 
 endif
-
-" color menu setting
-"hi Pmenu        guifg=#00ffff guibg=#000000            ctermbg=0 ctermfg=6
-"hi PmenuSel     guifg=#ffff00 guibg=#000000 		   cterm=bold ctermfg=3
-"hi PmenuSbar    guibg=#204d40                          ctermbg=6
-"hi PmenuThumb   guifg=#38ff56                          ctermfg=3
 
 " set the initial window size
 set lines=50 columns=140
@@ -144,7 +126,6 @@ endfunction
 nnoremap <F3> :VisualizeTab<CR>
 
 
-
 map  <silent> <F7>    <Esc>:cp<CR>
 map  <silent> <F8>    <Esc>:cn<CR>
 
@@ -153,9 +134,9 @@ nnoremap <C-A> ^
 map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
 
-"map <tab> <ESC>:bn<CR>
-"map <s-tab> <ESC>:bp<CR>
-imap <C-e> <ESC>
+"imap <C-e> <ESC>
+imap jj <ESC>
+
 "nmap <C-j> o<ESC>
 imap <C-v> <C-o><S-p>
 
@@ -184,10 +165,14 @@ vmap <C-a> ggVG
 
 "noremap <C-S>		:update<CR>
 " Alt-j ==> add blank line
-nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
-"nnoremap <A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-"nnoremap <A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+"nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+"nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+"nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+"nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+nnoremap <silent><C-CR> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-S-CR> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
 
 " grep key binding
 "map <C-F4> :execute 'vimgrep /'.expand('<cword>').'/gj '.expand('%') | cope
@@ -356,12 +341,11 @@ nnoremap <leader>e :Errors<CR>
 " end of fuzzy find
 
 " vimya - vim for maya
-let vimyaPort=12345
+let g:vimyaPort=12345
 nnoremap ,sm :py sendBufferToMaya ()<cr>
 vnoremap ,sm :py sendBufferToMaya ()<cr>
 nnoremap ,sb :py sendBufferToMaya (True)<cr>
 vnoremap ,sb :py sendBufferToMaya (True)<cr>
-"
 
 " taglist mel support
 let tlist_mel_settings='mel;f:function'
@@ -415,6 +399,8 @@ else
 	colorscheme solarized
 endif
 
+colorscheme codedark
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " quickly edit vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -460,24 +446,24 @@ nnoremap <silent> <Leader>g :Ack<CR>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " auto completion for c# files
-au FileType cs set omnifunc=syntaxcomplete#Complete
+"au FileType cs set omnifunc=syntaxcomplete#Complete
 
 " get rid of C-X,C-O
-function! SuperCleverTab()
-    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-        return "\<Tab>"
-    else
-        if &omnifunc != ''
-            return "\<C-X>\<C-O>"
-        elseif &dictionary != ''
-            return "\<C-K>"
-        else
-            return "\<C-N>"
-        endif
-    endif
-endfunction
+"function! SuperCleverTab()
+    "if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+        "return "\<Tab>"
+    "else
+        "if &omnifunc != ''
+            "return "\<C-X>\<C-O>"
+        "elseif &dictionary != ''
+            "return "\<C-K>"
+        "else
+            "return "\<C-N>"
+        "endif
+    "endif
+"endfunction
 
-inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+"inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " resize horzontal split window
@@ -544,3 +530,139 @@ language messages zh_TW.utf-8
 "set gfw=NSimsun:h12
 "set guifont=Courier\ New\:h12  
 "set guifontwide=NSimsun\:h12 
+
+set guifont=Consolas:h10:cANSI:qDRAFT
+
+
+
+nnoremap <C-Up> :silent! let &guifont = substitute(
+ \ &guifont,
+ \ ':h\zs\d\+',
+ \ '\=eval(submatch(0)+1)',
+ \ 'g')<CR>
+nnoremap <C-Down> :silent! let &guifont = substitute(
+ \ &guifont,
+ \ ':h\zs\d\+',
+ \ '\=eval(submatch(0)-1)',
+ \ 'g')<CR>
+
+hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
+
+"" syntastic {
+"let g:syntastic_python_checkers=['pyflakes']
+"let g:syntastic_javascript_checkers=['jsl', 'jshint']
+"let g:syntastic_html_checkers=['tidy', 'jshint']
+"let g:syntastic_error_symbol='✹'
+"let g:syntastic_warning_symbol='✴'
+"let g:syntastic_aggregate_errors=1
+
+"nnoremap <Leader>ts :SyntasticToggleMode<CR>
+"" }
+"" ale {
+
+"let g:ale_enabled = 0
+let g:ale_linters = {
+			\ 'sh' : ['shellcheck'],
+			\ 'vim' : ['vint'],
+			\ 'html' : ['tidy'],
+			\ 'python' : ['pylint'],
+			\ 'markdown' : ['mdl'],
+			\ 'javascript' : ['eslint'],
+			\}
+let g:ale_set_highlights = 0
+" If emoji not loaded, use default sign
+try
+  let g:ale_sign_error = emoji#for('boom')
+  let g:ale_sign_warning = emoji#for('small_orange_diamond')
+catch
+  " Use same sign and distinguish error and warning via different colors.
+  let g:ale_sign_error = '•'
+  let g:ale_sign_warning = '•'
+endtry
+
+"let g:ale_sign_error = '✘'
+"let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+"highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+"hi ale_error   cterm=None ctermfg=red ctermbg=NONE
+"hi ale_warning cterm=None ctermfg=yellow ctermbg=NONE
+
+
+let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
+let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
+
+" For a more fancy ale statusline
+function! ALEGetError()
+  let l:res = ale#statusline#Status()
+  if l:res ==# 'OK'
+	return ''
+  else
+	let l:e_w = split(l:res)
+	if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
+	  return ' •' . matchstr(l:e_w[0], '\d\+') .' '
+	endif
+  endif
+endfunction
+
+function! ALEGetWarning()
+  let l:res = ale#statusline#Status()
+  if l:res ==# 'OK'
+	return ''
+  else
+	let l:e_w = split(l:res)
+	if len(l:e_w) == 2
+	  return ' •' . matchstr(l:e_w[1], '\d\+')
+	elseif match(l:e_w, 'W') > -1
+	  return ' •' . matchstr(l:e_w[0], '\d\+')
+	endif
+  endif
+endfunction
+
+"if g:spacevim_gui
+  "let g:ale_echo_msg_error_str = 'Error'
+  "let g:ale_echo_msg_warning_str = 'Warning'
+"else
+  let g:ale_echo_msg_error_str = '✹ Error'
+  let g:ale_echo_msg_warning_str = '⚠ Warning'
+"endif
+
+nmap <silent> <C-k> <Plug>(ale_previous)
+nmap <silent> <C-j> <Plug>(ale_next)
+"nmap <Leader>en <Plug>(ale_next)
+"nmap <Leader>ep <Plug>(ale_previous)
+"nnoremap <Leader>ts :ALEToggle<CR>
+" }
+
+" python-mode {
+  let g:pymode_lint_checkers = ['pyflakes']
+  let g:pymode_trim_whitespaces = 0
+  let g:pymode_options = 0
+  let g:pymode_rope = 0
+
+  let g:pymode_indent = 1
+  let g:pymode_folding = 0
+  let g:pymode_options_colorcolumn = 1
+  let g:pymode_breakpoint_bind = '<leader>br'
+
+  "if spacevim#LayerLoaded('syntax-checking')
+    "let g:pymode_lint = 0
+  "endif
+" }
+
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+
+" switch snippet and complete key
+let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:jedi#completions_enabled = 0
+
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" My keybinding note
+" \ev: edit .vimrc
+" \sv: source .vimrc
