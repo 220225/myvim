@@ -50,3 +50,9 @@
 [submodule "bundle/vim-ripgrep"]
 	path = bundle/vim-ripgrep
 	url = https://github.com/jremmen/vim-ripgrep.git
+[submodule "bundle/codedark"]
+	path = bundle/codedark
+	url = https://github.com/tomasiser/vim-code-dark.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

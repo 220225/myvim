@@ -1,5 +1,23 @@
 call pathogen#infect()
 
+" fix python error from anaconda2
+let s:python_path = system('c:/Python27/python -', 'import sys;sys.stdout.write(",".join(sys.path))')
+
+python <<EOM
+import sys
+import vim
+
+python_paths = vim.eval('s:python_path').split(',')
+#sys.path = [_path for _path in python_paths if 'anaconda' not in _path.lower()]
+
+sys.path = [_path for _path in sys.path if 'anaconda' not in _path.lower()]
+#for path in python_paths:
+#    if not path in sys.path:
+#        print path
+#        sys.path.insert(0, path)
+EOM
+
+
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
 " source D:\Projects\Fenrir\working_stuff\myvimrc
