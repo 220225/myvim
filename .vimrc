@@ -671,14 +671,21 @@ nmap <silent> <C-j> <Plug>(ale_next)
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
 " switch snippet and complete key
-let g:UltiSnipsExpandTrigger="<C-Space>"
-let g:jedi#completions_enabled = 0
+let g:UltiSnipsExpandTrigger="<S-Space>"
 
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+
+" jedi-vim section (jedi is used to do the python auto-completion)
+let g:jedi#completions_enabled = 1
+let g:jedi#force_py_version = 2
+"let g:jedi#completions_command = <C-.>
+
+
 
 
 " My keybinding note
