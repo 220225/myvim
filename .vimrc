@@ -577,17 +577,20 @@ hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
 
 "nnoremap <Leader>ts :SyntasticToggleMode<CR>
 "" }
-"" ale {
+ "ale {
 
 let g:ale_enabled = 1
 let g:ale_linters = {
 			\ 'sh' : ['shellcheck'],
 			\ 'vim' : ['vint'],
 			\ 'html' : ['tidy'],
-			\ 'python' : ['pylint'],
+			\ 'python' : ['flake8'],
 			\ 'markdown' : ['mdl'],
 			\ 'javascript' : ['eslint'],
 			\}
+
+let g:ale_fixers = ['yapf', 'remove_trailing_lines', 'trim_whitespace']
+
 let g:ale_set_highlights = 1
 " If emoji not loaded, use default sign
 try
@@ -650,7 +653,7 @@ nmap <silent> <C-k> <Plug>(ale_previous)
 nmap <silent> <C-j> <Plug>(ale_next)
 "nmap <Leader>en <Plug>(ale_next)
 "nmap <Leader>ep <Plug>(ale_previous)
-"nnoremap <Leader>ts :ALEToggle<CR>
+nnoremap <Leader>ts :ALEToggle<CR>
 " }
 
 " python-mode {
@@ -667,15 +670,13 @@ nmap <silent> <C-j> <Plug>(ale_next)
   "if spacevim#LayerLoaded('syntax-checking')
     "let g:pymode_lint = 0
   "endif
-" }
-
-autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+ "}
 
 " switch snippet and complete key
 let g:UltiSnipsExpandTrigger="<C-Space>"
 
-let g:UltiSnipsJumpForwardTrigger="<c-m>"
-let g:UltiSnipsJumpBackwardTrigger="<c-n>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -687,7 +688,7 @@ let g:jedi#force_py_version = '2.7'
 autocmd FileType python setlocal omnifunc=jedi#completions 
 "let g:jedi#completions_command = <C-.>
 
-
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
 " My keybinding note
 " \ev: edit .vimrc
