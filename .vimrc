@@ -1,6 +1,7 @@
 call pathogen#infect()
+execute pathogen#helptags()
 
-" fix python error from anaconda2
+" fix python error from conda
 let s:python_path = system('c:/Python27/python -', 'import sys;sys.stdout.write(",".join(sys.path))')
 
 python <<EOM
@@ -8,9 +9,9 @@ import sys
 import vim
 
 python_paths = vim.eval('s:python_path').split(',')
-#sys.path = [_path for _path in python_paths if 'anaconda' not in _path.lower()]
+#sys.path = [_path for _path in python_paths if 'conda' not in _path.lower()]
 
-sys.path = [_path for _path in sys.path if 'anaconda' not in _path.lower()]
+sys.path = [_path for _path in sys.path if 'conda' not in _path.lower()]
 #for path in python_paths:
 #    if not path in sys.path:
 #        print path
@@ -578,7 +579,7 @@ hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
 "" }
 "" ale {
 
-"let g:ale_enabled = 0
+let g:ale_enabled = 1
 let g:ale_linters = {
 			\ 'sh' : ['shellcheck'],
 			\ 'vim' : ['vint'],
@@ -587,7 +588,7 @@ let g:ale_linters = {
 			\ 'markdown' : ['mdl'],
 			\ 'javascript' : ['eslint'],
 			\}
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
 " If emoji not loaded, use default sign
 try
   let g:ale_sign_error = emoji#for('boom')
@@ -671,10 +672,10 @@ nmap <silent> <C-j> <Plug>(ale_next)
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
 " switch snippet and complete key
-let g:UltiSnipsExpandTrigger="<S-Space>"
+let g:UltiSnipsExpandTrigger="<C-Space>"
 
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-m>"
+let g:UltiSnipsJumpBackwardTrigger="<c-n>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -682,9 +683,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " jedi-vim section (jedi is used to do the python auto-completion)
 let g:jedi#completions_enabled = 1
-let g:jedi#force_py_version = 2
+let g:jedi#force_py_version = '2.7'
+autocmd FileType python setlocal omnifunc=jedi#completions 
 "let g:jedi#completions_command = <C-.>
-
 
 
 
